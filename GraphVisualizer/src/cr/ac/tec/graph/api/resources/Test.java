@@ -11,7 +11,7 @@ public class Test {
 	
 	@GET
 	public Response get() {
-		return Response.status(200).entity("The website has been created").build();
+		return Response.status(200).entity("Created").build();
 	}
 
 
