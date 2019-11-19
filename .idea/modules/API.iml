@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="API" external.linked.project.path="$MODULE_DIR$/../../API" external.root.project.path="$MODULE_DIR$/../../API" external.system.id="GRADLE" external.system.module.group="" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="ExternalSystem" linkedProjectPath="$MODULE_DIR$/../../API" rootProjectPath="$MODULE_DIR$/../../API" />
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/API">
+      <excludeFolder url="file://$MODULE_DIR$/../../src/API/.gradle" />
+      <excludeFolder url="file://$MODULE_DIR$/../../API/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../API/out" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

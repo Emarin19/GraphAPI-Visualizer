@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id="API:main" external.linked.project.path="$MODULE_DIR$/../../API" external.root.project.path="$MODULE_DIR$/../../API" external.system.id="GRADLE" external.system.module.group="" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="ExternalSystem" linkedProjectPath="$MODULE_DIR$/../../API" rootProjectPath="$MODULE_DIR$/../../API" />
+  <component name="FacetManager">
+    <facet type="web" name="Web Gradle : API-1.0-SNAPSHOT.war">
+      <configuration>
+        <webroots>
+          <root url="file://C:\Users\Jose\Documents\GitHub\GraphAPI-Visualizer\API\src\main\webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/../../API/src/main/java" />
+          <root url="file://$MODULE_DIR$/../../API/src/main/resources" />
+          <root url="file://$MODULE_DIR$/../../API/src/main/app" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="javaeeApplication" name="JavaEE Application Gradle : API-1.0-SNAPSHOT.ear">
+      <configuration>
+        <descriptors>
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/../../API/build/libs/exploded/API-1.0-SNAPSHOT.ear/META-INF/application.xml" />
+        </descriptors>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../API/out/production/classes" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../src/API/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../src/API/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/API/src/main/app" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../../src/API/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
