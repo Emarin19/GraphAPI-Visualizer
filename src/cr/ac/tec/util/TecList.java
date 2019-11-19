@@ -13,7 +13,7 @@ import java.util.Iterator;
  * @author Jose Morales Vargas
  * @since October 2019
  */
-public class Teclst<T> implements Iterable<T>, Serializable {
+public class TecList<T> implements Iterable<T>, Serializable {
     private TNode<T> first;
     private TNode<T> last;
 
@@ -22,7 +22,7 @@ public class Teclst<T> implements Iterable<T>, Serializable {
      * The way data is stored is using a TNode object
      * @see TNode
      */
-    public Teclst(){
+    public TecList(){
         first = last = null;
     }
 
@@ -41,7 +41,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             last.next = elemento;
             last=elemento;
         }
-        return;
     }
 
     /**
@@ -52,7 +51,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
         for(T i : items){
             add(i);
         }
-        return;
     }
 
     /**
@@ -319,6 +317,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
      */
     @Override
     public Iterator<T> iterator() {
-        return new TeclstIterator(first);
+        return new TecListIterator(first);
     }
 }

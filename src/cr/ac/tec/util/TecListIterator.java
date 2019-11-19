@@ -2,10 +2,10 @@ package cr.ac.tec.util;
 
 import java.util.Iterator;
 
-public class TeclstIterator<T> implements Iterator<T> {
+public class TecListIterator<T> implements Iterator<T> {
     private TNode<T> current;
 
-    public TeclstIterator(TNode<T> first) {
+    public TecListIterator(TNode<T> first) {
         current = first;
     }
     @Override
