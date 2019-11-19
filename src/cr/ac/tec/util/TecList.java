@@ -90,7 +90,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
 
             add(value);
         }
-        return;
     }
 
     public void reinsert(T value, int index){
@@ -114,7 +113,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
             }
             current.data = value;
         }
-        return;
     }
 
     /**
@@ -172,7 +170,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
             nodeT.prev.next = nodeT.next;
             nodeT.next.prev= nodeT.prev;
         }
-        return;
     }
     public void removeValue(T value){
         TNode<T> current = first;
@@ -182,7 +179,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
         if(current.data.equals(value)) {
             remove(current);
         }
-        return;
     }
 
     /**
@@ -197,7 +193,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
                 first=last=null;
             }
         }
-        return;
     }
 
     /**
@@ -212,7 +207,6 @@ public class TecList<T> implements Iterable<T>, Serializable {
                 last=first=null;
             }
         }
-        return;
     }
 
     /**

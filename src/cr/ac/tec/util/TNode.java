@@ -25,5 +25,4 @@ public class TNode<T> implements Serializable {
         this.data = data;
         this.next = this.prev =null;
     }
-
 }
