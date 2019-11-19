@@ -11,6 +11,5 @@
     <title>$Title$</title>
   </head>
   <body>
-  hello ohaio gozaimasu
   </body>
 </html>

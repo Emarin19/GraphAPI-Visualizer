@@ -22,5 +22,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="GlassFish 5.0.0" level="application_server_libraries" />
     <orderEntry type="library" name="Jersey-2.2 (2)" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="WebSphere 19.0.0.11" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="Jersey-2.2 (2)" level="project" />
   </component>
 </module>
