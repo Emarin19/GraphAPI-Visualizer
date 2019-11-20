@@ -1,7 +1,9 @@
 package cr.ac.tec.rest_api.resources;
 
+import cr.ac.tec.rest_api.data.Edge;
 import cr.ac.tec.rest_api.data.GraphList;
 import cr.ac.tec.rest_api.data.Graph;
+import cr.ac.tec.rest_api.data.Node;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

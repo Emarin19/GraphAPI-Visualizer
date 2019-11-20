@@ -1,21 +1,55 @@
 package cr.ac.tec.rest_api.data;
 
+import cr.ac.tec.util.TecList;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
 public class Graph implements Serializable {
     private UUID id;
-    private ArrayList<Node> nodes = new ArrayList<>();
-    private ArrayList<Edge> edges = new ArrayList<>();
-
+    private TecList<Node> nodes = new TecList<>();
+    private TecList<Edge> edges = new TecList<>();
     public Graph(){
         this.id = UUID.randomUUID();
     }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
-    public ArrayList getNodes() { return nodes; }
-    public void setNodes(ArrayList nodes) { this.nodes = nodes; }
-    public ArrayList getEdges() { return edges; }
-    public void setEdges(ArrayList edges) { this.edges = edges; }
+    public Node[] getNodes() {
+        Node[] serialized = new Node[nodes.size()];
+        int i = 0;
+        for (Node nodo: nodes) {
+            serialized[i]= nodo;
+            i++;
+        }
+        return serialized;
+    }
+    public void setNodes(Node[] nodesSrc) {
+        nodes = new TecList<>();
+        for (Node node: nodesSrc) {
+            nodes.add(node);
+        }
+    }
+    public Edge[] getEdges() {
+        Edge[] serialized = new Edge[edges.size()];
+        int i = 0;
+        for (Edge edge: edges) {
+            serialized[i]= edge;
+            i++;
+        }
+        return serialized;
+    }
+    public void setEdges(Edge[] edgesSrc) {
+        edges = new TecList<>();
+        for (Edge edge: edgesSrc) {
+            edges.add(edge);
+        }
+    }
+
+    public TecList edgesProperty(){
+        return edges;
+    }
+    public TecList nodesProperty(){
+        return nodes;
+    }
 }

@@ -1,7 +1,15 @@
 package cr.ac.tec.util;
 
+import sun.misc.SharedSecrets;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 /**
  * Technological Institute of Costa Rica
  * Computer Engineering
@@ -16,6 +24,7 @@ import java.util.Iterator;
 public class TecList<T> implements Iterable<T>, Serializable {
     private TNode<T> first;
     private TNode<T> last;
+    private int size;
 
     /**
      * Default constructor for a Teclst which is an implementation of doubly Linked List
@@ -41,18 +50,8 @@ public class TecList<T> implements Iterable<T>, Serializable {
             last.next = elemento;
             last=elemento;
         }
+        size+=1;
     }
-
-    /**
-     * Creates a new TNode object per value specified. Adds the nodes to the Teclst
-     * @param items Collection of items to be added to the Teclst
-     */
-    public void addAll(T ...items){
-        for(T i : items){
-            add(i);
-        }
-    }
-
     /**
      * Creates a new TNode object which stores the value specified. Adds the node to the Teclst in the index
      * specified
@@ -68,12 +67,14 @@ public class TecList<T> implements Iterable<T>, Serializable {
             }else{
                 first = last = new TNode<>(value);
             }
+            size+=1;
         }else if(index == size()-1){
             TNode<T> newNode = new TNode<>(value);
             last.prev.next = newNode;
             newNode.prev = last.prev;
             newNode.next = last;
             last.prev = newNode;
+            size+=1;
         }else if(index<size()-1){
 
             TNode current = first;
@@ -85,9 +86,9 @@ public class TecList<T> implements Iterable<T>, Serializable {
             newNode.prev = current.prev;
             current.prev = newNode;
             newNode.next = current;
+            size+=1;
         }
         else if(index==size()){
-
             add(value);
         }
     }
@@ -151,6 +152,7 @@ public class TecList<T> implements Iterable<T>, Serializable {
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
                 data=current.data;
+                size-=1;
             }
             return data;
         }
@@ -167,8 +169,10 @@ public class TecList<T> implements Iterable<T>, Serializable {
         }else if(nodeT.equals(last)){
             removeLast();
         }else{
+
             nodeT.prev.next = nodeT.next;
             nodeT.next.prev= nodeT.prev;
+            size-=1;
         }
     }
     public void removeValue(T value){
@@ -192,6 +196,7 @@ public class TecList<T> implements Iterable<T>, Serializable {
             }else{
                 first=last=null;
             }
+            size-=1;
         }
     }
 
@@ -206,6 +211,7 @@ public class TecList<T> implements Iterable<T>, Serializable {
             }else{
                 last=first=null;
             }
+            size-=1;
         }
     }
 
