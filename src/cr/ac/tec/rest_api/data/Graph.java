@@ -3,15 +3,17 @@ package cr.ac.tec.rest_api.data;
 import cr.ac.tec.util.TecList;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class Graph implements Serializable {
     private UUID id;
-    private TecList<Node> nodes = new TecList<>();
-    private TecList<Edge> edges = new TecList<>();
+    private TecList<Node> nodes;
+    private TecList<Edge> edges;
+
     public Graph(){
         this.id = UUID.randomUUID();
+        this.nodes = new TecList<>();
+        this.edges = new TecList<>();
     }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
@@ -45,7 +47,6 @@ public class Graph implements Serializable {
             edges.add(edge);
         }
     }
-
     public TecList edgesProperty(){
         return edges;
     }

@@ -129,6 +129,23 @@ public class TecList<T> implements Iterable<T>, Serializable {
         return current.data;
     }
 
+    public void remove(int index){
+        if (index==0){
+            removeFirst();
+        }
+        else if (index==size){
+            removeLast();
+        }
+        else{
+            TNode<T> current = first;
+            for (int i=0; i<index; i++){
+                current = current.next;
+            }
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+    }
+
     /**
      * Deletes the reference to a TNode at an specified position, returns its value
      * @param index position of TNode in the Teclst
@@ -213,6 +230,13 @@ public class TecList<T> implements Iterable<T>, Serializable {
             }
             size-=1;
         }
+    }
+
+    /**
+     * removes all elements of list
+     */
+    public void clear(){
+        first = last = null;
     }
 
     /**
