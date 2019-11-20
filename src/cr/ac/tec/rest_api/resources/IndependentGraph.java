@@ -5,6 +5,7 @@ import cr.ac.tec.rest_api.data.GraphList;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
@@ -29,4 +30,12 @@ public class IndependentGraph {
                 .build();
     }
 
+    @Path("nodes")
+    public NodeHandler handleNodes(){
+        return new NodeHandler(currentId);
+    }
+    @Path("edges")
+    public EdgeHandler handleEdges(){
+        return new EdgeHandler(currentId);
+    }
 }
