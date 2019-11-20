@@ -8,7 +8,7 @@ import java.util.Set;
 //Defines the base URI for all resource URIs.
 @ApplicationPath("/")
 //The java class declares root resource and provider classes
-public class MyApplication extends Application{
+public class GraphAPI extends Application{
     @Context
     private UriInfo context;
     //The method returns a non-empty collection with classes, that must be included in the published JAX-RS application
