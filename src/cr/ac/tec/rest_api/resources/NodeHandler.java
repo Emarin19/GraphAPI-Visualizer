@@ -11,9 +11,21 @@ import java.util.UUID;
 
 @Path("/nodes")
 public class NodeHandler {
-    Graph parentGraph;
+    private Graph parentGraph;
+    public NodeHandler(Graph graph){ this.parentGraph = graph; }
 
-    public NodeHandler(UUID graphId){ this.parentGraph = GraphList.graphs.get(graphId); }
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getNodes(){
+        if (parentGraph!=null){
+            return Response.status(200)
+                    .entity(parentGraph.getNodes())
+                    .build();
+        }
+        return Response.status(500)
+                .entity("Error")
+                .build();
+    }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -33,6 +45,36 @@ public class NodeHandler {
         return Response.status(201)
                 .entity(parentGraph.getNodes())
                 .build();
+    public Response addNode(Node newNode){
+        try{
+            parentGraph.nodesProperty().add(newNode);
+            return Response.status(200)
+                    .entity(newNode.getId())
+                    .build();
+        }catch (Exception e){
+            return Response.status(500)
+                    .entity("Error")
+                    .build();
+        }
+    }
+
+    @DELETE
+    public Response deleteNodes(){
+        try {
+            parentGraph.nodesProperty().clear();
+            return Response.status(200)
+                    .entity("Deleted nodes")
+                    .build();
+        }catch (Exception e){
+            return Response.status(500)
+                    .entity("Error")
+                    .build();
+        }
+    }
+
+    @Path("{id}")
+    public IndependentNode handleSingleNode(@PathParam("id")UUID nodeId){
+        return new IndependentNode(parentGraph, nodeId);
     }
 
 }

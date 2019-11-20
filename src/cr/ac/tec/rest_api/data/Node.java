@@ -10,8 +10,16 @@ public class Node implements Serializable {
     private int outDegree;
     private Object entity;
 
+    public Node(){
+        this.id = UUID.randomUUID();
+        this.inDegree = this.outDegree = 0;
+    }
 
-    public Node(){ this.id = UUID.randomUUID(); }
+    public Node(Object entity){
+        super();
+        this.entity = entity;
+    }
+    public Node(UUID id){ this.id = id; }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
     public int getInDegree() { return inDegree; }

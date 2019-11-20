@@ -1,9 +1,7 @@
 package cr.ac.tec.rest_api.resources;
 
-import cr.ac.tec.rest_api.data.Edge;
 import cr.ac.tec.rest_api.data.GraphList;
 import cr.ac.tec.rest_api.data.Graph;
-import cr.ac.tec.rest_api.data.Node;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,7 +11,7 @@ import java.util.UUID;
 @Path("/graphs")
 public class Graphs {
     @GET
-    @Produces("application/json")
+    @Produces(MediaType.APPLICATION_JSON)
     public Response getGraphs(){
         return Response.status(200)
                 .entity(GraphList.graphs)
@@ -24,10 +22,10 @@ public class Graphs {
     @Produces(MediaType.APPLICATION_JSON)
     public Response createGraph(){
         try {
-            Graph g = new Graph();
-            GraphList.graphs.put(g.getId(),g);
+            Graph graph = new Graph();
+            GraphList.graphs.put(graph.getId(),graph);
             return Response.status(200)
-                    .entity(g)
+                    .entity(graph)
                     .build();
         }catch (Exception e){
             return Response.status(500)
