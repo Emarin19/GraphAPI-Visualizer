@@ -30,9 +30,19 @@ public class EdgeHandler {
         Node out = parentGraph.searchNodeByUUID(e.getStartNode());
         Node in = parentGraph.searchNodeByUUID(e.getEndNode());
         if (out!=null && in!=null){
-            parentGraph.edgesProperty().add(e);
-            out.setOutDegree(out.getOutDegree()+1);
-            in.setInDegree(in.getInDegree()+1);
+            boolean found = false;
+            for (Edge edge: parentGraph.edgesProperty()) {
+                if (edge.getStartNode().equals(e.getStartNode())&&
+                edge.getEndNode().equals(e.getEndNode())){
+                    found= true;
+                    edge.setWeight(edge.getWeight() + e.getWeight());
+                }
+            }
+            if(!found) {
+                parentGraph.edgesProperty().add(e);
+                out.setOutDegree(out.getOutDegree() + 1);
+                in.setInDegree(in.getInDegree() + 1);
+            }
             return Response.status(200)
                     .entity("Created edge")
                     .build();

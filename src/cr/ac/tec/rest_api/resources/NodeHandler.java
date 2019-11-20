@@ -47,6 +47,7 @@ public class NodeHandler {
     public Response deleteNodes(){
         try {
             parentGraph.nodesProperty().clear();
+            parentGraph.edgesProperty().clear();
             return Response.status(200)
                     .entity("Deleted nodes")
                     .build();

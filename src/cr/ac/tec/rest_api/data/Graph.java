@@ -77,7 +77,6 @@ public class Graph implements Serializable {
     public TecList<Node> nodesProperty(){
         return nodes;
     }
-
     public void refreshEdges() {
         TecList<Edge> toDelete = new TecList<>();
         for (Edge edge: edges) {
