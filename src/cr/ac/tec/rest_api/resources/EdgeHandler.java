@@ -2,6 +2,8 @@ package cr.ac.tec.rest_api.resources;
 
 import cr.ac.tec.rest_api.data.Edge;
 import cr.ac.tec.rest_api.data.Graph;
+import cr.ac.tec.rest_api.data.Node;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -17,16 +19,20 @@ public class EdgeHandler {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getEdges(){
         return Response.status(200)
-                .entity(parentGraph.edgesProperty())
+                .entity(parentGraph.getEdges())
                 .build();
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addEdge(Edge newEdge){
-        if (parentGraph.nodesProperty().contains(newEdge.getStartNode()) && parentGraph.nodesProperty().contains(newEdge.getEndNode())){
-            parentGraph.edgesProperty().add(newEdge);
+    public Response addEdge(Edge e){
+        Node out = parentGraph.searchNodeByUUID(e.getStartNode());
+        Node in = parentGraph.searchNodeByUUID(e.getEndNode());
+        if (out!=null && in!=null){
+            parentGraph.edgesProperty().add(e);
+            out.setOutDegree(out.getOutDegree()+1);
+            in.setInDegree(in.getInDegree()+1);
             return Response.status(200)
                     .entity("Created edge")
                     .build();
@@ -40,12 +46,16 @@ public class EdgeHandler {
     public Response deleteEdges(){
         if (parentGraph.edgesProperty()!=null){
             parentGraph.edgesProperty().clear();
+            for (Node  node: parentGraph.nodesProperty()) {
+                node.setInDegree(0);
+                node.setOutDegree(0);
+            }
             return Response.status(200)
                     .entity("Deleted edges")
                     .build();
         }
         if (parentGraph.edgesProperty().isEmpty()){
-            return Response.status(200)
+            return Response.status(404)
                     .entity("Graph doesn´t has edges")
                     .build();
         }

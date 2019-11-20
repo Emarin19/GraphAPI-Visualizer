@@ -47,10 +47,56 @@ public class Graph implements Serializable {
             edges.add(edge);
         }
     }
-    public TecList edgesProperty(){
+
+    //NON JSON FUNCTIONS
+    public UUID[] listNodes(){
+        UUID[] nodeList = new UUID[nodes.size()];
+        int i= 0;
+        for (Node node: nodes) {
+            nodeList[i] = node.getId();
+        }
+        return nodeList;
+    }
+    public Node searchNodeByUUID(UUID id){
+        for (Node node:nodes) {
+            if (node.getId().equals(id)){
+                return node;
+            }
+        } return null;
+    }
+    public Edge searchEdgeByUUID(UUID id){
+        for (Edge edge:edges) {
+            if (edge.getId().equals(id)){
+                return edge;
+            }
+        } return null;
+    }
+    public TecList<Edge> edgesProperty(){
         return edges;
     }
-    public TecList nodesProperty(){
+    public TecList<Node> nodesProperty(){
         return nodes;
+    }
+
+    public void refreshEdges() {
+        TecList<Edge> toDelete = new TecList<>();
+        for (Edge edge: edges) {
+            Node start = searchNodeByUUID(edge.getStartNode());
+            Node end = searchNodeByUUID(edge.getEndNode());
+            if(start==null && end==null) {
+                toDelete.add(edge);
+            }else if(start==null){
+                toDelete.add(edge);
+                end.setInDegree(end.getInDegree()-1);
+            }
+            else if(end==null){
+                toDelete.add(edge);
+                start.setOutDegree(start.getOutDegree()-1);
+            }
+
+        }
+        for (Edge edge: toDelete) {
+            edges.removeValue(edge);
+        }
     }
 }

@@ -13,9 +13,17 @@ public class Graphs {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getGraphs(){
-        return Response.status(200)
-                .entity(GraphList.graphs)
-                .build();
+        if (GraphList.graphs.isEmpty())
+            //empty array if no graphs in memory
+            return Response.status(200)
+                    .entity(new String[0])
+                    .build();
+        else {
+            return Response.status(200)
+                    .entity(GraphList.graphs)
+                    .build();
+        }
+
     }
 
     @POST
@@ -25,7 +33,7 @@ public class Graphs {
             Graph graph = new Graph();
             GraphList.graphs.put(graph.getId(),graph);
             return Response.status(200)
-                    .entity(graph)
+                    .entity(graph.getId())
                     .build();
         }catch (Exception e){
             return Response.status(500)

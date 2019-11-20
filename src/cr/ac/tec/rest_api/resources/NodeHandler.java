@@ -3,6 +3,7 @@ package cr.ac.tec.rest_api.resources;
 import cr.ac.tec.rest_api.data.Graph;
 import cr.ac.tec.rest_api.data.GraphList;
 import cr.ac.tec.rest_api.data.Node;
+import cr.ac.tec.rest_api.data.SimpleIDObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -13,6 +14,7 @@ import java.util.UUID;
 public class NodeHandler {
     private Graph parentGraph;
     public NodeHandler(Graph graph){ this.parentGraph = graph; }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -34,28 +36,11 @@ public class NodeHandler {
         Node newNode = new Node();
         newNode.setEntity(requestBody);
         parentGraph.nodesProperty().add(newNode);
+        SimpleIDObject simpleJsonID = new SimpleIDObject();
+        simpleJsonID.setId(newNode.getId());
         return Response.status(201)
-                .entity(newNode.getId())
+                .entity(simpleJsonID)
                 .build();
-    }
-
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getNodes(){
-        return Response.status(201)
-                .entity(parentGraph.getNodes())
-                .build();
-    public Response addNode(Node newNode){
-        try{
-            parentGraph.nodesProperty().add(newNode);
-            return Response.status(200)
-                    .entity(newNode.getId())
-                    .build();
-        }catch (Exception e){
-            return Response.status(500)
-                    .entity("Error")
-                    .build();
-        }
     }
 
     @DELETE

@@ -12,7 +12,7 @@ public class Edge implements Serializable {
     public Edge(){ this.id = UUID.randomUUID(); }
     public Edge(UUID id) {this.id = id; }
     public Edge(UUID startNode, UUID endNode, int weight){
-        super();
+        this();
         this.startNode = startNode;
         this.endNode = endNode;
         this.weight = weight;

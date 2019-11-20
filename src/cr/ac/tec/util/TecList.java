@@ -237,6 +237,7 @@ public class TecList<T> implements Iterable<T>, Serializable {
      */
     public void clear(){
         first = last = null;
+        size=0;
     }
 
     /**
