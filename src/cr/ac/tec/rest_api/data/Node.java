@@ -1,14 +1,15 @@
 package cr.ac.tec.rest_api.data;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Node {
+public class Node implements Serializable {
     private UUID id;
     private int inDegree;
     private int outDegree;
     private Object data;
 
-    public Node(){ }
+    public Node(){ this.id = UUID.randomUUID(); }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
     public int getInDegree() { return inDegree; }

@@ -17,12 +17,39 @@ public class TNode<T> implements Serializable {
     TNode<T> prev;
     T data;
 
+    public TNode(){
+
+    }
     /**
      * Constructor of the TNode
      * @param data data to be stored
      */
     public TNode(T data){
         this.data = data;
-        this.next = this.prev =null;
+        this.next = this.prev = null;
+    }
+
+    public TNode<T> getNext() {
+        return next;
+    }
+
+    public void setNext(TNode<T> next) {
+        this.next = next;
+    }
+
+    public TNode<T> getPrev() {
+        return prev;
+    }
+
+    public void setPrev(TNode<T> prev) {
+        this.prev = prev;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

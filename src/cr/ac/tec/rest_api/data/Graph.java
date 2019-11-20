@@ -1,19 +1,21 @@
 package cr.ac.tec.rest_api.data;
 
-import cr.ac.tec.util.TecList;
-
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.UUID;
 
-public class Graph {
+public class Graph implements Serializable {
     private UUID id;
-    private TecList<Node> nodes;
-    private TecList<Edge> edges;
+    private ArrayList<Node> nodes = new ArrayList<>();
+    private ArrayList<Edge> edges = new ArrayList<>();
 
-    public Graph(){ }
+    public Graph(){
+        this.id = UUID.randomUUID();
+    }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
-    public TecList<Node> getNodes() { return nodes; }
-    public void setNodes(TecList<Node> nodes) { this.nodes = nodes; }
-    public TecList<Edge> getEdges() { return edges; }
-    public void setEdges(TecList<Edge> edges) { this.edges = edges; }
+    public ArrayList getNodes() { return nodes; }
+    public void setNodes(ArrayList nodes) { this.nodes = nodes; }
+    public ArrayList getEdges() { return edges; }
+    public void setEdges(ArrayList edges) { this.edges = edges; }
 }

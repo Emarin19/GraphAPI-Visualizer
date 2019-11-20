@@ -1,14 +1,15 @@
 package cr.ac.tec.rest_api.data;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Edge {
+public class Edge implements Serializable {
     private UUID id;
     private UUID start;
     private UUID end;
     private int weight;
 
-    public Edge(){ }
+    public Edge(){ this.id = UUID.randomUUID(); }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
     public UUID getStart() { return start; }
