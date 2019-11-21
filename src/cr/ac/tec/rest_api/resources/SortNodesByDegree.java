@@ -1,7 +1,6 @@
 package cr.ac.tec.rest_api.resources;
 
 import cr.ac.tec.rest_api.data.Graph;
-import cr.ac.tec.rest_api.data.Node;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -19,10 +18,27 @@ public class SortNodesByDegree {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response sortNode(Graph graph){
-        
-            return Response.status(500)
-                    .entity("Wrong parameter")
-                    .build();
-
+        parentGraph.setOrderingWay(graph.getOrderingWay());
+        if (parentGraph.nodesProperty()!=null) {
+            if (parentGraph.getOrderingWay().equalsIgnoreCase("DESC")) {
+                parentGraph.sortNodesDESC();
+                return Response.status(200)
+                        .entity(parentGraph.getNodes())
+                        .build();
+            }
+            if (parentGraph.getOrderingWay().equalsIgnoreCase("ASC")) {
+                parentGraph.sortNodesACS();
+                return Response.status(200)
+                        .entity(parentGraph.getNodes())
+                        .build();
+            } else {
+                return Response.status(500)
+                        .entity("Wrong parameter")
+                        .build();
+            }
+        }
+        return Response.status(404)
+                .entity("Graph doesn´t has nodes")
+                .build();
     }
 }

@@ -106,7 +106,7 @@ public class Graph implements Serializable {
     public void setOrderingWay(String orderingWay) { this.orderingWay = orderingWay; }
 
     //Bubble sort
-    public Node[] sortNodesDESC(){
+    public Node[] sortNodesACS(){
         int n = nodesProperty().size();
         Node temp = null;
         boolean stop = false;
@@ -129,26 +129,15 @@ public class Graph implements Serializable {
         return getNodes();
     }
 
-    public Node[] sortNodesACD(){
-        int n = nodesProperty().size();
-        Node temp = null;
-        boolean stop = false;
-        while(!stop) {
-            int c = 0;
-            for (int i = 0; i < n; i++) {
-                for (int j = i; j < n; j++) {
-                    int valueA = (nodesProperty().get(i).getInDegree()+nodesProperty().get(i).getOutDegree())/2;
-                    int valueB = (nodesProperty().get(j).getInDegree()+nodesProperty().get(j).getOutDegree())/2;
-                    if(valueA > valueB){
-                        temp = nodesProperty().get(i);
-                        nodesProperty().reinsert(nodesProperty().get(j), i);
-                        nodesProperty().reinsert(temp, j);
-                        c++;
-                    }
-                }
-            }
-            if (c == 0) { stop = true; }
+    public Node[] sortNodesDESC(){
+        Node[] ACS = sortNodesACS();
+        Node[] DESC = new Node[ACS.length];
+        int j = ACS.length;
+        for (int i=0; i<ACS.length; i++){
+            DESC[j-1] = ACS[i];
+            j = j-1;
         }
-        return getNodes();
+        setNodes(DESC);
+        return DESC;
     }
 }
