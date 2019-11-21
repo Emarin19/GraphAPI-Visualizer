@@ -9,6 +9,7 @@ public class Node implements Serializable {
     private int inDegree;
     private int outDegree;
     private Object entity;
+    private boolean visited;
 
     public Node(){
         this.id = UUID.randomUUID();
@@ -28,4 +29,6 @@ public class Node implements Serializable {
     public void setOutDegree(int outDegree) { this.outDegree = outDegree; }
     public Object getEntity() { return entity; }
     public void setEntity(Object entitySrc) { this.entity = entitySrc; }
+    public boolean isVisited() { return visited; }
+    public void setVisited(boolean visited) { this.visited = visited; }
 }
