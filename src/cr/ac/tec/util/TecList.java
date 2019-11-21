@@ -1,7 +1,15 @@
 package cr.ac.tec.util;
 
+import sun.misc.SharedSecrets;
+
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+
 /**
  * Technological Institute of Costa Rica
  * Computer Engineering
@@ -13,16 +21,17 @@ import java.util.Iterator;
  * @author Jose Morales Vargas
  * @since October 2019
  */
-public class Teclst<T> implements Iterable<T>, Serializable {
+public class TecList<T> implements Iterable<T>, Serializable {
     private TNode<T> first;
     private TNode<T> last;
+    private int size;
 
     /**
      * Default constructor for a Teclst which is an implementation of doubly Linked List
      * The way data is stored is using a TNode object
      * @see TNode
      */
-    public Teclst(){
+    public TecList(){
         first = last = null;
     }
 
@@ -41,20 +50,8 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             last.next = elemento;
             last=elemento;
         }
-        return;
+        size+=1;
     }
-
-    /**
-     * Creates a new TNode object per value specified. Adds the nodes to the Teclst
-     * @param items Collection of items to be added to the Teclst
-     */
-    public void addAll(T ...items){
-        for(T i : items){
-            add(i);
-        }
-        return;
-    }
-
     /**
      * Creates a new TNode object which stores the value specified. Adds the node to the Teclst in the index
      * specified
@@ -70,12 +67,14 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             }else{
                 first = last = new TNode<>(value);
             }
+            size+=1;
         }else if(index == size()-1){
             TNode<T> newNode = new TNode<>(value);
             last.prev.next = newNode;
             newNode.prev = last.prev;
             newNode.next = last;
             last.prev = newNode;
+            size+=1;
         }else if(index<size()-1){
 
             TNode current = first;
@@ -87,12 +86,11 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             newNode.prev = current.prev;
             current.prev = newNode;
             newNode.next = current;
+            size+=1;
         }
         else if(index==size()){
-
             add(value);
         }
-        return;
     }
 
     public void reinsert(T value, int index){
@@ -116,7 +114,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             }
             current.data = value;
         }
-        return;
     }
 
     /**
@@ -130,6 +127,23 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             current = current.next;
         }
         return current.data;
+    }
+
+    public void remove(int index){
+        if (index==0){
+            removeFirst();
+        }
+        else if (index==size){
+            removeLast();
+        }
+        else{
+            TNode<T> current = first;
+            for (int i=0; i<index; i++){
+                current = current.next;
+            }
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
     }
 
     /**
@@ -155,6 +169,7 @@ public class Teclst<T> implements Iterable<T>, Serializable {
                 current.prev.next = current.next;
                 current.next.prev = current.prev;
                 data=current.data;
+                size-=1;
             }
             return data;
         }
@@ -171,10 +186,11 @@ public class Teclst<T> implements Iterable<T>, Serializable {
         }else if(nodeT.equals(last)){
             removeLast();
         }else{
+
             nodeT.prev.next = nodeT.next;
             nodeT.next.prev= nodeT.prev;
+            size-=1;
         }
-        return;
     }
     public void removeValue(T value){
         TNode<T> current = first;
@@ -184,7 +200,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
         if(current.data.equals(value)) {
             remove(current);
         }
-        return;
     }
 
     /**
@@ -198,8 +213,8 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             }else{
                 first=last=null;
             }
+            size-=1;
         }
-        return;
     }
 
     /**
@@ -213,8 +228,16 @@ public class Teclst<T> implements Iterable<T>, Serializable {
             }else{
                 last=first=null;
             }
+            size-=1;
         }
-        return;
+    }
+
+    /**
+     * removes all elements of list
+     */
+    public void clear(){
+        first = last = null;
+        size=0;
     }
 
     /**
@@ -319,6 +342,6 @@ public class Teclst<T> implements Iterable<T>, Serializable {
      */
     @Override
     public Iterator<T> iterator() {
-        return new TeclstIterator(first);
+        return new TecListIterator(first);
     }
 }

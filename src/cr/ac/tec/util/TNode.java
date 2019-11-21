@@ -1,6 +1,9 @@
 package cr.ac.tec.util;
 
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 /**
  * Technological institute of Costa Rica
@@ -16,14 +19,12 @@ public class TNode<T> implements Serializable {
     TNode<T> next;
     TNode<T> prev;
     T data;
-
     /**
      * Constructor of the TNode
      * @param data data to be stored
      */
     public TNode(T data){
         this.data = data;
-        this.next = this.prev =null;
+        this.next = this.prev = null;
     }
-
 }
