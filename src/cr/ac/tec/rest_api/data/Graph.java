@@ -7,6 +7,7 @@ import java.util.UUID;
 
 public class Graph implements Serializable {
     private UUID id;
+    private String orderingWay;
     private TecList<Node> nodes;
     private TecList<Edge> edges;
 
@@ -14,6 +15,9 @@ public class Graph implements Serializable {
         this.id = UUID.randomUUID();
         this.nodes = new TecList<>();
         this.edges = new TecList<>();
+    }
+    public Graph(String orderingWay){
+        this.setOrderingWay(orderingWay);
     }
     public UUID getId() { return id; }
     public void setId(UUID id) { this.id = id; }
@@ -97,5 +101,54 @@ public class Graph implements Serializable {
         for (Edge edge: toDelete) {
             edges.removeValue(edge);
         }
+    }
+    public String getOrderingWay() { return orderingWay; }
+    public void setOrderingWay(String orderingWay) { this.orderingWay = orderingWay; }
+
+    //Bubble sort
+    public Node[] sortNodesDESC(){
+        int n = nodesProperty().size();
+        Node temp = null;
+        boolean stop = false;
+        while(!stop) {
+            int c = 0;
+            for (int i = 0; i < n; i++) {
+                for (int j = i; j < n; j++) {
+                    int valueA = (nodesProperty().get(i).getInDegree()+nodesProperty().get(i).getOutDegree())/2;
+                    int valueB = (nodesProperty().get(j).getInDegree()+nodesProperty().get(j).getOutDegree())/2;
+                    if(valueA > valueB){
+                        temp = nodesProperty().get(i);
+                        nodesProperty().reinsert(nodesProperty().get(j), i);
+                        nodesProperty().reinsert(temp, j);
+                        c++;
+                    }
+                }
+            }
+            if (c == 0) { stop = true; }
+        }
+        return getNodes();
+    }
+
+    public Node[] sortNodesACD(){
+        int n = nodesProperty().size();
+        Node temp = null;
+        boolean stop = false;
+        while(!stop) {
+            int c = 0;
+            for (int i = 0; i < n; i++) {
+                for (int j = i; j < n; j++) {
+                    int valueA = (nodesProperty().get(i).getInDegree()+nodesProperty().get(i).getOutDegree())/2;
+                    int valueB = (nodesProperty().get(j).getInDegree()+nodesProperty().get(j).getOutDegree())/2;
+                    if(valueA > valueB){
+                        temp = nodesProperty().get(i);
+                        nodesProperty().reinsert(nodesProperty().get(j), i);
+                        nodesProperty().reinsert(temp, j);
+                        c++;
+                    }
+                }
+            }
+            if (c == 0) { stop = true; }
+        }
+        return getNodes();
     }
 }

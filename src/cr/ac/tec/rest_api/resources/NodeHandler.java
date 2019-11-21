@@ -1,7 +1,6 @@
 package cr.ac.tec.rest_api.resources;
 
 import cr.ac.tec.rest_api.data.Graph;
-import cr.ac.tec.rest_api.data.GraphList;
 import cr.ac.tec.rest_api.data.Node;
 import cr.ac.tec.rest_api.data.SimpleIDObject;
 
@@ -14,7 +13,6 @@ import java.util.UUID;
 public class NodeHandler {
     private Graph parentGraph;
     public NodeHandler(Graph graph){ this.parentGraph = graph; }
-
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
