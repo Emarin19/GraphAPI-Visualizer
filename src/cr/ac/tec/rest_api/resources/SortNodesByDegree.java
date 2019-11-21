@@ -19,16 +19,10 @@ public class SortNodesByDegree {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response sortNode(Graph graph){
-        if (graph.getOrderingWay().equalsIgnoreCase("ASC")){
-
-        }
-        else if (graph.getOrderingWay().equalsIgnoreCase("DESC")){
-
-        }
-        else {
+        
             return Response.status(500)
                     .entity("Wrong parameter")
                     .build();
-        }
+
     }
 }

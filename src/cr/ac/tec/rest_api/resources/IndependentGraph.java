@@ -55,6 +55,4 @@ public class IndependentGraph {
     @Path("degree")
     public SortNodesByDegree sortNode() { return new SortNodesByDegree(graph); }
 
-    @Path("dijkstra")
-
 }
