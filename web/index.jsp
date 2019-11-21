@@ -11,5 +11,6 @@
     <title>$Title$</title>
   </head>
   <body>
+  <script src="sigma/sigma.min.js"></script>
   </body>
 </html>
