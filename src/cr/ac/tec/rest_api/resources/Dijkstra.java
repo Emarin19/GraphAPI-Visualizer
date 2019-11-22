@@ -3,6 +3,8 @@ package cr.ac.tec.rest_api.resources;
 import cr.ac.tec.rest_api.data.Edge;
 import cr.ac.tec.rest_api.data.Graph;
 import cr.ac.tec.rest_api.data.Node;
+import cr.ac.tec.rest_api.data.ShortestPath;
+import cr.ac.tec.util.TecList;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -25,6 +27,9 @@ public class Dijkstra {
         Node start = parentGraph.searchNodeByUUID(path.getStartNode());
         Node end = parentGraph.searchNodeByUUID(path.getEndNode());
         if (start!=null && end!=null){
+            for (Node node: parentGraph.nodesProperty()){
+                node.setVisited(false);
+            }
             HashMap<Node, Node> changedAt = new HashMap<>();
             changedAt.put(start, null);
 
@@ -55,23 +60,21 @@ public class Dijkstra {
                             .build();
                 }
                 if (currentNode == end){
-                    /*return Response.status(200)
-                            .entity("The path with the smallest weight between " + start.getEntity() + "and " + end.getEntity() + " is: ")
-                            .build();*/
                     Node child = end;
-                    Object paths = end.getEntity();
+                    TecList<Node> paths = new TecList<>();
+                    paths.add(end);
                     while (true){
                         Node parent = changedAt.get(child);
                         if (parent==null){
                             break;
                         }
-
-                        paths = parent.getEntity() + " " + paths;
+                        paths.add(parent);
                         child = parent;
                     }
-                    //System.out.println(paths);
-                    //System.out.println("The path costs: " + shortestPathMap.get(end));
-                    //return 1;
+                    ShortestPath shortestPath = new ShortestPath(shortestPathMap.get(end), paths);
+                    return Response.status(200)
+                            .entity(shortestPath)
+                            .build();
                 }
                 currentNode.setVisited(true);
 

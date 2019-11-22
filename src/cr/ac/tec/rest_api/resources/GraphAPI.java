@@ -1,9 +1,6 @@
 package cr.ac.tec.rest_api.resources;
 
-import cr.ac.tec.rest_api.data.Edge;
-import cr.ac.tec.rest_api.data.GraphList;
-import cr.ac.tec.rest_api.data.Graph;
-import cr.ac.tec.rest_api.data.Node;
+import cr.ac.tec.rest_api.data.*;
 import cr.ac.tec.util.TecList;
 
 import javax.ws.rs.ApplicationPath;
@@ -20,9 +17,10 @@ public class GraphAPI extends Application{
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<>();
-        classes.add(Graphs.class);
+        classes.add(ShortestPath.class);
         classes.add(GraphList.class);
         classes.add(TecList.class);
+        classes.add(Graphs.class);
         classes.add(Graph.class);
         classes.add(Node.class);
         classes.add(Edge.class);
