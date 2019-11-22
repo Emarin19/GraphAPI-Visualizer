@@ -9,6 +9,7 @@
 <html>
   <head>
     <title>$Title$</title>
+    <link rel="stylesheet" type="text/css" href="ccs/style.css">
   </head>
   <body>
   <script src="sigma/sigma.min.js"></script>

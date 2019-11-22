@@ -1,0 +1,231 @@
+body{
+    background: blanchedalmond;
+}
+/*SIGMA CONTAINER*/
+#sigma-container{
+    position: absolute;
+    top: 75px;
+    left: 300px;
+    width: 985px;
+    height: 500px;
+    background: aliceblue;
+}
+
+
+/*NODE SELECTED*/
+#Node-Selected{
+    background: crimson;
+    left: 1276px;
+    top: 68px;
+    width: 250px;
+    height: 250px;
+    position: relative;
+}
+
+.Node-Individual Button{
+    background: aliceblue;
+    color: black;
+    padding: 10px 10px;
+    width: 100px;
+    text-align: center;
+    font-size: 12px;
+    font-family: "Arial Black", serif;
+
+}
+.Node-Individual Label{
+    position: absolute;
+    left: 50px;
+    font-size: 15px;
+    font-family: "Arial Black", serif;
+
+}
+#Title-Nodo{
+    left: 50px;
+}
+#Node-Field{
+    position: relative;
+    top: 35px;
+    left: 100px;
+    width: 100px;
+    height: 30px;
+    background: aliceblue;
+    text-align: center;
+
+}
+#Button-Update{
+    position: absolute;
+    top: 85px;
+    left: 20px;
+}
+#Button-Delete{
+    position: absolute;
+    top: 85px;
+    left: 140px;
+}
+#Button-Info{
+    position: absolute;
+    top: 140px;
+    left: 20px;
+}
+#Button-Node{
+    position: absolute;
+    top: 140px;
+    left: 140px;
+}
+
+
+
+/* CURRENT GRAPH OPTIONS*/
+.Graph-Options{
+    position: absolute;
+    left: 600px;
+    top: 600px;
+    width: 500px;
+    height: 100px;
+
+
+}
+.Graph-Options button{
+    display: inline;
+    text-align: center;
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+    position: absolute;
+}
+#Add-Nodes{
+    left: 0;
+    top: 50px;
+}
+#Manage-Edges{
+    left: 250px;
+    top: 50px;
+}
+.Graph-Options label{
+    display: inline;
+    text-align: left;
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+    position: absolute;
+}
+#Graph-Name{
+    left: 0;
+}
+#Graph-ID{
+    left: 300px;
+}
+
+
+
+/*LIST OF GRAPH CREATED*/
+.List_Graph{
+    background: #aba785;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 500px;
+}
+.List_Graph b{
+    position: absolute;
+    top: 10px;
+    left: 80px;
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+
+}
+
+.List_Graph div{
+    position: absolute;
+    top: 43px;
+    left: 5px;
+    width: 290px;
+    height: 450px;
+    overflow: scroll;
+    background: #fbffff;
+}
+
+.Options_list_Graph{
+    position: absolute;
+    top: 500px;
+    left: 0;
+    width: 300px;
+    height: 200px;
+}
+.Options_list_Graph button{
+    display: block;
+    margin: 30px;
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+    padding: 10px;
+
+}
+
+
+/**SHORTEST PATH*/
+.Shortest-Path{
+    position: absolute;
+    top: 350px;
+    left: 1285px;
+    width: 250px;
+    height: 330px;
+    background: #7a9d7f;}
+
+
+.Shortest-Path label{
+    position: absolute;
+    padding: 10px;
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+
+}
+#Shortest-Path-title{
+    position: absolute;
+    left: 50px;
+}
+.Shortest-Path button{
+    font-family: "Arial Black", serif;
+    font-size: 15px;
+    padding: 5px;
+}
+
+#Shortest-Path-Button{
+    position: absolute;
+    top: 110px;
+    left: 90px;
+}
+
+#Name-Node-Source{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    background: #fbffff;
+}
+
+#Name-Node-Target{
+    position: absolute;
+    top: 50px;
+    left: 160px;
+    background: #fbffff;
+}
+#List-Nodes-Shortest-Path{
+    position: absolute;
+    top: 160px;
+    left: 5px;
+    width: 240px;
+    height: 130px;
+    overflow: scroll;
+    background: #fbffff;
+}
+
+#Weight{
+    position: absolute;
+    top: 300px;
+    left: 80px;
+}
+#Weight-label{
+    position: absolute;
+    top: 300px;
+    left: 130px;
+    width: 50px;
+    background: #fbffff;
+}
